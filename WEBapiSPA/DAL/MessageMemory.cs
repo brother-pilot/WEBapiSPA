@@ -1,4 +1,5 @@
-﻿using WEBapiSPA.DI;
+﻿using System;
+using WEBapiSPA.DI;
 using WEBapiSPA.Model;
 
 namespace WEBapiSPA.DAL
@@ -10,6 +11,27 @@ namespace WEBapiSPA.DAL
         public MessageMemory()
         {
             mes = new List<Message>();
+            DataInitializer();
+        }
+
+        private void DataInitializer()
+        {
+            var device1 = Guid.NewGuid();
+            var seed = 1000;
+            Random rnd = new Random(seed);
+            for (int i = 0; i < 10; i++)
+            {
+                var m1 = new Message
+                {
+                    Id = Guid.NewGuid(),
+                    Device = device1,
+                    UserName = "User",
+                    StartTime = new DateTime(rnd.Next(1990, 2000), rnd.Next(1, 12),rnd.Next(1, 28)),
+                    EndTime = DateTime.Now,
+                    VersionPA = "1.0.0.56"
+                };
+                mes.Add(m1);
+            }
         }
 
         public List<Message> GetListMessage(Guid devId)

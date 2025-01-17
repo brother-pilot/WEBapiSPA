@@ -3,81 +3,30 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WEBapiSPA.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class MessageController : Controller
     {
-        // GET: MessageController
+        //[HttpGet]
+        //public IEnumerable<WeatherForecast> Get()
+        //{
+        //    return Enumerable.Range(1, 2).Select(index => new WeatherForecast
+        //    {
+        //        Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+        //        TemperatureC = Random.Shared.Next(-20, 55),
+        //        Summary = "sddd"
+        //    })
+        //    .ToArray();
+        //}
+
+        //GET: MessageController
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return Ok();
         }
 
-        // GET: MessageController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
-        // GET: MessageController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
-        // POST: MessageController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: MessageController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: MessageController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: MessageController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: MessageController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

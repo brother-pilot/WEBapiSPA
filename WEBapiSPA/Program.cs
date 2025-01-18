@@ -12,7 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //настраиваем DI
-builder.Services.AddScoped<IMessageMemory, MessageMemory>();
+//builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+builder.Services.AddSingleton<IMessageMemory,MessageMemory>();
 // Configure the HTTP request pipeline.
 
 var app = builder.Build();

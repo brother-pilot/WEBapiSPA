@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WEBapiSPA.DI;
+using WEBapiSPA.Model;
 
 namespace WEBapiSPA.Controllers
 {
@@ -19,13 +21,43 @@ namespace WEBapiSPA.Controllers
         //    .ToArray();
         //}
 
-        //GET: MessageController
-        [HttpGet]
-        public ActionResult Index()
+        private IMessageMemory MM { get; }
+
+        public MessageController(IMessageMemory messageMemory)
         {
-            return Ok();
+            MM = messageMemory;
         }
 
+        //public MessageController()
+        //{
+            
+        //}
+
+        //GET: MessageController
+        [HttpGet]
+        public List<Message> Index()
+        {        
+            return MM.GetListDevice();
+        }
+
+        [HttpGet("{deviceId:guid}")]
+        public List<Message> GetListMessage(Guid deviceId)
+        {
+            try
+            {
+                return MM.GetListMessage(deviceId);
+            }
+            catch (Exception)
+            {
+                return new List<Message>();
+            }
+        }
+
+        [HttpPost]
+        public IActionResult SaveMessage(Message message)
+        {
+            return MM.SaveMessage(message)?Ok(): View("Can't save message!");
+        }
 
 
     }

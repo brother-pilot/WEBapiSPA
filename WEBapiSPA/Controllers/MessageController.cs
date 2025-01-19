@@ -9,17 +9,6 @@ namespace WEBapiSPA.Controllers
     [Route("[controller]")]
     public class MessageController : Controller
     {
-        //[HttpGet]
-        //public IEnumerable<WeatherForecast> Get()
-        //{
-        //    return Enumerable.Range(1, 2).Select(index => new WeatherForecast
-        //    {
-        //        Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-        //        TemperatureC = Random.Shared.Next(-20, 55),
-        //        Summary = "sddd"
-        //    })
-        //    .ToArray();
-        //}
 
         private IMessageMemory MM { get; }
 

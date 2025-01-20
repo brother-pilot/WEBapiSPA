@@ -30,11 +30,11 @@ namespace WEBapiSPA.Controllers
         }
 
         [HttpGet("{deviceId:guid}")]
-        public List<Message> GetListMessage(Guid deviceId)
+        public IEnumerable<Message> GetListMessage(Guid deviceId)
         {
             try
             {
-                return MM.GetListMessage(deviceId);
+                return MM.GetListMessage(deviceId).ToArray();
             }
             catch (Exception)
             {

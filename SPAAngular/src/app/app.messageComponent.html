@@ -5,29 +5,61 @@
 
 <p *ngIf="!messages"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
 
-<h1>Список моделей</h1>
 
-<table *ngIf="messages">
-  <thead>
-    <tr>
-      <td>Идентификатор оборудования</td>
-      <td>Пользователь</td>
-      <td>Время включения</td>
-      <td>Время выключения</td>
-      <td>Версия ПО</td>
-      <td></td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let m of messages">
-      <td>{{m?.id}}</td>
-      <td>{{m?.userName}}</td>
-      <td>{{m?.startTime}}</td>
-      <td>{{m?.endTime}}</td>
-      <td>{{m?.versionPA}}</td>
-      <td>
-        
-      </td>
-    </tr>
-  </tbody>
-</table>
+<ng-container *ngTemplateOutlet="isFirstTemplate ? listDevices : listMesseges"></ng-container>
+
+<ng-template #listDevices>
+  <h1>Список оборудования</h1>
+  <table *ngIf="messages">
+    <thead>
+      <tr>
+        <td>Идентификатор оборудования</td>
+        <td>Пользователь</td>
+        <td>Версия ПО</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of messages">
+        <ng-template [ngIf]="messages">
+          <td>{{m?.device}}</td>
+          <td>{{m?.userName}}</td>
+          <td>{{m?.versionPA}}</td>
+          <td>
+            <button class="btn btn-sm" (click)="getListMessage(m)">Подробнее</button>
+          </td>
+        </ng-template>
+
+      </tr>
+    </tbody>
+  </table>
+</ng-template>
+
+<ng-template #listMesseges>
+  <h1>Список сообщений для оборудования {{messages[0]?.device}}</h1>
+  <table *ngIf="messages">
+    <thead>
+      <tr>
+        <td>Идентификатор сообщения</td>
+        <td>Время включения</td>
+        <td>Время выключения</td>
+        <td>Версия ПО</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of messages">
+        <ng-template [ngIf]="messages">
+          <td>{{m?.id}}</td>
+          <td>{{m?.startTime}}</td>
+          <td>{{m?.endTime}}</td>
+          <td>{{m?.versionPA}}</td>
+          <td>
+            <button class="btn btn-sm" (click)="loadMessages()">К списку устройств</button>
+          </td>
+        </ng-template>
+
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

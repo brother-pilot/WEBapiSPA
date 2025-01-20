@@ -24,6 +24,7 @@ import { Data } from "@angular/router";
 
 export interface Message {
   id: string;
+  device: string;
   userName: string;
   startTime: Date;
   endTime: Date;

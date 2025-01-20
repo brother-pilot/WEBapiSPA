@@ -11,8 +11,10 @@ import { Message } from './message';
 export class AppMessageComponent implements OnInit {
 
   //message: Message = new Message();   // изменяемый товар
-  public messages: Message[]=[];                // массив сообщений
+  public messages: Message[] = [];                // массив сообщений
+  //public deviceId: string | undefined;
   //tableMode: boolean = true;          // табличный режим
+  public isFirstTemplate: boolean = true;  
 
   constructor(private dataService: DataService) { }
 
@@ -23,6 +25,15 @@ export class AppMessageComponent implements OnInit {
   loadMessages() {
     this.dataService.get()
       .subscribe((data:any) => this.messages = data);
+    console.log(this.messages);
+    this.isFirstTemplate = true;
+    //console.log(typeof this.messages);
+  }
+
+  getListMessage(message: Message) {
+    this.dataService.getListMessage(message.device)
+      .subscribe((data: any) => this.messages = data);
+    this.isFirstTemplate = false;
     //console.log(this.messages);
     //console.log(typeof this.messages);
   }

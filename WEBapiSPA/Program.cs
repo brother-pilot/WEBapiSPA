@@ -16,6 +16,20 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IMessageMemory,MessageMemory>();
 // Configure the HTTP request pipeline.
 
+//разрешаем запрос сервака ангуляра к asp net core(CORS)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularOrigins",
+    builder =>
+    {
+        builder.WithOrigins(
+                            "http://localhost:4200"
+                            )
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -23,6 +37,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//CORS
+app.UseCors("AllowAngularOrigins");
 
 //app.UseAuthorization();
 //app.UseHttpsRedirection();

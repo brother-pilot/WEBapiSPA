@@ -24,9 +24,9 @@ namespace WEBapiSPA.Controllers
 
         //GET: MessageController
         [HttpGet]
-        public List<Message> Index()
+        public IEnumerable<Message> Index()
         {        
-            return MM.GetListDevice();
+            return MM.GetListDevice().ToArray();
         }
 
         [HttpGet("{deviceId:guid}")]

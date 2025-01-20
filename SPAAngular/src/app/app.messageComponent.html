@@ -1,0 +1,33 @@
+
+<h1 id="tableLabel">Data from component</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!messages"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
+
+<h1>Список моделей</h1>
+
+<table *ngIf="messages">
+  <thead>
+    <tr>
+      <td>Идентификатор оборудования</td>
+      <td>Пользователь</td>
+      <td>Время включения</td>
+      <td>Время выключения</td>
+      <td>Версия ПО</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of messages">
+      <td>{{m?.id}}</td>
+      <td>{{m?.userName}}</td>
+      <td>{{m?.startTime}}</td>
+      <td>{{m?.endTime}}</td>
+      <td>{{m?.versionPA}}</td>
+      <td>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>

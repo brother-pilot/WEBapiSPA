@@ -1,5 +1,6 @@
 using WEBapiSPA.DAL;
 using WEBapiSPA.DI;
+using WEBapiSPA.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 //настраиваем DI
 //builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddSingleton<IMessageMemory,MessageMemory>();
+builder.Services.AddTransient<TestService>();
 // Configure the HTTP request pipeline.
 
 //разрешаем запрос сервака ангуляра к asp net core(CORS)

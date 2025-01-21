@@ -1,15 +1,18 @@
 ﻿using System;
 using WEBapiSPA.DI;
 using WEBapiSPA.Model;
+using WEBapiSPA.Services;
 
 namespace WEBapiSPA.DAL
 {
     public class MessageMemory : IMessageMemory
     {
         private readonly List<Message> mes;
+        private readonly ILogger<MessageMemory> log;
 
-        public MessageMemory()
+        public MessageMemory(ILogger<MessageMemory> logger)
         {
+            log = logger;
             mes = new List<Message>();
             DataInitializer();
         }
@@ -42,6 +45,7 @@ namespace WEBapiSPA.DAL
                 VersionPA = "1.0.0.56"
             };
             mes.Add(m2);
+            log.LogInformation("Initial data were created!");
         }
 
         public List<Message> GetListMessage(Guid devId)
@@ -49,8 +53,10 @@ namespace WEBapiSPA.DAL
             var listMes = mes.Where(m => m.Device == devId).ToList();
             if (listMes.Count==0||listMes == null)
             {
-                throw new Exception($"Device with id {devId} not found!");
+                log.LogError($"Messages for device {devId} not found!");
+                throw new Exception($"Messages for device {devId} not found!");
             }
+            log.LogInformation($"List messages with device id {devId} is recieved!");
             return listMes;
         }
 
@@ -60,10 +66,12 @@ namespace WEBapiSPA.DAL
             try
             {
                 mes.Add(message);
+                log.LogInformation($"Message {message.Id} was saved!");
                 return true;
             }
             catch (Exception)
             {
+                log.LogError($"Message {message.Id} can't be saved!");
                 return false;
             }
         }
@@ -75,8 +83,10 @@ namespace WEBapiSPA.DAL
                          .ToList(); ;
             if (listDev == null)
             {
+                log.LogError($"No devices found!");
                 throw new Exception($"No devices found!");
             }
+            log.LogInformation($"List devices is recieved!");
             return listDev;
         }
     }

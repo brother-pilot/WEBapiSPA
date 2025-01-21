@@ -15,7 +15,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
     LoggerModule.forRoot({
       serverLoggingUrl: 'http://localhost:5000/log/', // Replace with YOUR API,
       level: NgxLoggerLevel.TRACE,
-      serverLogLevel: NgxLoggerLevel.ERROR,
+      serverLogLevel: NgxLoggerLevel.LOG,
       disableConsoleLogging: false
     })
 

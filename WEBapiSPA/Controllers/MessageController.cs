@@ -18,6 +18,7 @@ namespace WEBapiSPA.Controllers
         {
             log = logger;
             MM = messageMemory;
+            logger.LogInformation("На разработку потрачено 22 часа. Общая часть ТЗ сделана + логгирование.\r\nСпециально выделены в тип Error сообщения от проекта с ангуляром");
         }
         //TO DO: сообщения логов выводятся от сервиса MessageMemory, а не от MessageController
 

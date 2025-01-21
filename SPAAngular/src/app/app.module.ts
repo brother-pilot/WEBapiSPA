@@ -10,7 +10,15 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
     AppMessageComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule,
+    HttpClientModule,
+    LoggerModule.forRoot({
+      serverLoggingUrl: 'http://localhost:5000/log/', // Replace with YOUR API,
+      level: NgxLoggerLevel.TRACE,
+      serverLogLevel: NgxLoggerLevel.ERROR,
+      disableConsoleLogging: false
+    })
+
   ],
   providers: [],
   bootstrap: [AppMessageComponent]

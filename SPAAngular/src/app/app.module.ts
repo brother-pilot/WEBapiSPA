@@ -10,6 +10,8 @@ import { DeviceListComponent } from './device-list/device-list.component';
 import { routes } from "./app.routes";
 import { DeleteMessageComponent } from './delete-message/delete-message.component';
 import { FormsModule } from "@angular/forms";
+import { LogService } from './log.service';
+import { LogPublishersService } from "./LogPublishers.Service";
 
 
 @NgModule({
@@ -32,7 +34,7 @@ import { FormsModule } from "@angular/forms";
     FormsModule
 
   ],
-  providers: [],
+  providers: [LogService, LogPublishersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

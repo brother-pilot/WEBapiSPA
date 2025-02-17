@@ -14,7 +14,7 @@ export class DataService {
   }
 
   get() {
-    this.logger.error("Get request to webapi from angular", "Get request to webapi");
+    this.logger.error("Get request to webapi from angular", new Logmes("Tom","555"));
     return this.http.get(this.url);
   }
 
@@ -31,4 +31,18 @@ export class DataService {
   //deleteProduct(id: number) {
   //  return this.http.delete(this.url + '/' + id);
   //}
+}
+
+export class Logmes {
+    public id: string;
+    public device: string;
+
+  constructor(
+    id: string,
+    device: string)
+  {
+    this.id = id;
+    this.device = device;
+  }
+  
 }

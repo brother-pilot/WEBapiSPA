@@ -22,7 +22,7 @@ namespace WEBapiSPA.DAL
             var device1 = Guid.NewGuid();
             var seed = 1000;
             Random rnd = new Random(seed);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 100; i++)
             {
                 var m1 = new Message
                 {
@@ -88,6 +88,21 @@ namespace WEBapiSPA.DAL
             }
             log.LogInformation($"List devices is recieved!");
             return listDev;
+        }
+
+        public bool DellMessageOlderDate(DateTime dateTime)
+        {
+            try
+            {
+                mes.RemoveAll(m=>m.StartTime<=dateTime|| m.EndTime <= dateTime);
+                log.LogInformation($"Message older {dateTime} was removed!");
+                return true;
+            }
+            catch (Exception)
+            {
+                log.LogError($"Message older {dateTime} can't be removed!");
+                return false;
+            }
         }
     }
 }

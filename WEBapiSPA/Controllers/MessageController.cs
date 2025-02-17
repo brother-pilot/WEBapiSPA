@@ -68,6 +68,15 @@ namespace WEBapiSPA.Controllers
             return res?Ok(): View("Can't save message!");
         }
 
-
+        [HttpDelete]
+        public IActionResult DeleteMessage(DateTime dateTime)
+        {
+            var res = MM.DellMessageOlderDate(dateTime);
+            if (res)
+                log.LogInformation($"Message {dateTime} was removed!");
+            else
+                log.LogError($"Message {dateTime} can't be removed!");
+            return res ? Ok() : View("Can't delete message!");
+        }
     }
 }

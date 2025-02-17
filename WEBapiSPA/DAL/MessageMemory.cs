@@ -48,6 +48,11 @@ namespace WEBapiSPA.DAL
             log.LogInformation("Initial data were created!");
         }
 
+        public List<Message> GetListMessage()
+        {
+            return mes;
+        }
+
         public List<Message> GetListMessage(Guid devId)
         {
             var listMes = mes.Where(m => m.Device == devId).ToList();
@@ -104,5 +109,6 @@ namespace WEBapiSPA.DAL
                 return false;
             }
         }
+
     }
 }

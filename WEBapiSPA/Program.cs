@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddSingleton<IMessageMemory,MessageMemory>();
 builder.Services.AddTransient<LogService>();
+builder.Services.AddScoped<FileService>();
 // Configure the HTTP request pipeline.
 
 //разрешаем запрос сервака ангуляра к asp net core(CORS)

@@ -11,19 +11,19 @@ namespace WEBapiSPA.Controllers
     {
         private IMessageFile MF { get; }
         private IMessageMemory MM { get; }
-        private readonly ILogger<MessageMemory> log;
+        private readonly ILogger<FileController> log;
 
         public FileController(
             IMessageFile messageFile, 
             IMessageMemory messageMemory, 
-            ILogger<MessageMemory> logger)
+            ILogger<FileController> logger)
         {
             log = logger;
             MM= messageMemory;
             MF = messageFile;
         }
 
-        [HttpPost]
+        [HttpHead]
         public IActionResult SaveMessages()
         {
             var res = MF.SaveMessages(MM.GetListMessage());

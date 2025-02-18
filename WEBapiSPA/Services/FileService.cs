@@ -9,9 +9,9 @@ namespace WEBapiSPA.Services
     public class FileService:IMessageFile
     {
         public string PathModel { get; }
-        private readonly ILogger<MessageMemory> log;
+        private readonly ILogger<FileService> log;
 
-        public FileService(ILogger<MessageMemory> logger)
+        public FileService(ILogger<FileService> logger)
         {
             PathModel = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             log = logger;
@@ -20,7 +20,7 @@ namespace WEBapiSPA.Services
 
         public bool SaveMessages(List<Message> listItems)
         {
-            var date = DateTime.Now.ToString().Replace(':', '_');
+            var date = DateTime.Now.ToString(); //.Replace(':', '_');
             var fileName = Path.Combine(PathModel, date + ".csv");
             try
             {
@@ -32,12 +32,17 @@ namespace WEBapiSPA.Services
                 return true;
                     
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                log.LogError($"Messages can't be saved in file {date}.csv!");
+                log.LogError(e,$"Messages can't be saved in file {date}.csv!");
                 //throw new Exception("Не удалось сохранить данные в файл!");
                 return false;
             }
+        }
+
+        public bool SaveFiles(string fileName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

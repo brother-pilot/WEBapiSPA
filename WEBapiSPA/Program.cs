@@ -1,12 +1,18 @@
+using Microsoft.Extensions.Logging;
 using WEBapiSPA.DAL;
 using WEBapiSPA.DI;
+using WEBapiSPA.Filters;
 using WEBapiSPA.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
+builder.Services.AddControllers(c =>
+{
+    c.Filters.Add<LogActionFilter>();
+});//добавляем фильтры тут*/
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -15,7 +21,8 @@ builder.Services.AddSwaggerGen();
 //настраиваем DI
 //builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddSingleton<IMessageMemory,MessageMemory>();
-builder.Services.AddTransient<LogService>();
+//builder.Services.AddTransient<LogService>();
+//builder.Services.AddSingleton<LogService>();
 builder.Services.AddScoped<IMessageFile,FileService>();
 // Configure the HTTP request pipeline.
 

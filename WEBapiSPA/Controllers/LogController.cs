@@ -9,9 +9,9 @@ namespace WEBapiSPA.Controllers
     [Route("[controller]")]
     public class LogController : Controller
     {
-        private readonly ILogger<MessageMemory> log;
+        private readonly ILogger<LogController> log;
 
-        public LogController(ILogger<MessageMemory> logger)
+        public LogController(ILogger<LogController> logger)
         {
             log = logger;
         }
@@ -21,8 +21,8 @@ namespace WEBapiSPA.Controllers
         {
             IActionResult ret;
 
-            log.LogError($"Search request from angular part!");
-            log.LogError("Level: "+value.Level.ToString()+
+            log.LogInformation($"Search request from angular part!");
+            log.LogInformation("Level: "+value.Level.ToString()+
                 " Additional: "+value.Additional.ToString()+
                 " Message: " + value.Message +
                 " Timestamp: " + value.Timestamp +

@@ -50,9 +50,9 @@ namespace WEBapiSPA.Controllers
                     log.LogError($"Search request to find messages for device {deviceId}. No messages found!");
                 return res;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                log.LogError($"Search request to find messages for device {deviceId}. Internal server error!");
+                log.LogError(e.ToString());
                 return new List<Message>();
             }
         }

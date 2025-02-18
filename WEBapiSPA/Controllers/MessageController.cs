@@ -65,7 +65,7 @@ namespace WEBapiSPA.Controllers
                 log.LogInformation($"Message {message.Id} was saved!"); 
             else
                 log.LogError($"Message {message.Id} can't be saved!");
-            return res?Ok(): View("Can't save message!");
+            return res?Ok(): new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
 
         [HttpDelete]
@@ -76,7 +76,7 @@ namespace WEBapiSPA.Controllers
                 log.LogInformation($"Message {dateTime} was removed!");
             else
                 log.LogError($"Message {dateTime} can't be removed!");
-            return res ? Ok() : View("Can't delete message!");
+            return res ? Ok() : new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
     }
 }

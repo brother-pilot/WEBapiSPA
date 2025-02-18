@@ -5,6 +5,8 @@ using WEBapiSPA.Model;
 
 namespace WEBapiSPA.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class FileController : Controller
     {
         private IMessageFile MF { get; }
@@ -29,7 +31,7 @@ namespace WEBapiSPA.Controllers
                 log.LogInformation($"Messages was saved in file!");
             else
                 log.LogError($"Messages can't be saved in file!");
-            return res ? Ok() : View("Can't save messages in file!");
+            return res ? Ok() : new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
     }
 }

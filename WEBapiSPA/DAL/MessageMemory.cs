@@ -50,6 +50,7 @@ namespace WEBapiSPA.DAL
 
         public List<Message> GetListMessage()
         {
+            log.LogInformation($"List messages was recieved!");
             return mes;
         }
 

@@ -8,5 +8,11 @@
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string VersionPA { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}; Device: {Device}; UserName: {UserName};\n" +
+                $" StartTime: {StartTime}; EndTime: {EndTime}; VersionPA: {VersionPA};";
+        }
     }
 }

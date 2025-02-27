@@ -24,6 +24,7 @@ namespace WEBapiSPA.Filters
             _logger.LogInformation(message);
         }
 
+        //сохранение специально сделано в отдельный файл, для демострации работы фильтра
         private void WriteLog(string message)
         {
             try

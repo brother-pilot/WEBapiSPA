@@ -21,6 +21,7 @@ namespace WEBapiSPA.Controllers
         {
             IActionResult ret;
 
+            //ConsoleColor.Green;
             log.LogInformation($"Search request from angular part!");
             log.LogInformation("Level: "+value.Level.ToString()+
                 " Additional: "+value.Additional.ToString()+

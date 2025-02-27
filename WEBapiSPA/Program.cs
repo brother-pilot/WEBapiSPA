@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.Extensions.Logging;
 using WEBapiSPA.DAL;
 using WEBapiSPA.DI;
 using WEBapiSPA.Filters;
 using WEBapiSPA.Services;
+using static System.Net.WebRequestMethods;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +20,19 @@ builder.Services.AddControllers(c =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddHttpLogging(logging =>
+{
+    logging.LoggingFields = HttpLoggingFields.All;
+    logging.RequestHeaders.Add("Sec-Fetch-Mode");
+    logging.MediaTypeOptions.AddText("application/javascript");
+    logging.RequestBodyLogLimit = 4096;
+    logging.ResponseBodyLogLimit = 4096;
+    logging.CombineLogs = true;
+});
+
 //настраиваем DI
-//builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+//builder.Services.AddSingleton<ILogger,LogService>();
 builder.Services.AddSingleton<IMessageMemory,MessageMemory>();
-//builder.Services.AddTransient<LogService>();
-//builder.Services.AddSingleton<LogService>();
 builder.Services.AddScoped<IMessageFile,FileService>();
 // Configure the HTTP request pipeline.
 
@@ -51,6 +61,7 @@ if (app.Environment.IsDevelopment())
 //CORS
 app.UseCors("AllowAngularOrigins");
 
+app.UseHttpLogging();
 //app.UseAuthorization();
 //app.UseHttpsRedirection();
 

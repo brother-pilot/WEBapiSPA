@@ -1,4 +1,4 @@
-@WEBapiSPA_HostAddress = http://localhost:5222
+@WEBapiSPA_HostAddress = http://localhost:5000
 
 GET {{WEBapiSPA_HostAddress}}/weatherforecast/
 Accept: application/json

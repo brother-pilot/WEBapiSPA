@@ -18,7 +18,7 @@ namespace WEBapiSPA.Filters
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            string message = $"Action '{context.ActionDescriptor.DisplayName}' is starting.";
+            string message = $"Action '{context.ActionDescriptor.DisplayName}' is starting in {DateTime.Now}.";
             WriteLog(message);
             //  Этот метод выполняется до метода контроллера
             _logger.LogInformation(message);
@@ -26,14 +26,21 @@ namespace WEBapiSPA.Filters
 
         private void WriteLog(string message)
         {
-            StreamWriter streamWriter = new StreamWriter("App_Data/log.txt", true);
-            streamWriter.WriteLine(message);
-            streamWriter.Close();
+            try
+            {
+                StreamWriter streamWriter = new StreamWriter("logFilter.txt", true);
+                streamWriter.WriteLine(message);
+                streamWriter.Close();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e,"Can't save log file!");
+            }
         }
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            string message = $"Action '{context.ActionDescriptor.DisplayName}' has completed.";
+            string message = $"Action '{context.ActionDescriptor.DisplayName}' has completed in {DateTime.Now}.";
             WriteLog(message);
             // Этот метод выполняется после метода контроллера
             _logger.LogInformation(message);

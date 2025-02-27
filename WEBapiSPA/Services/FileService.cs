@@ -20,7 +20,7 @@ namespace WEBapiSPA.Services
 
         public bool SaveMessages(List<Message> listItems)
         {
-            var date = DateTime.Now.ToString(); //.Replace(':', '_');
+            var date = DateTime.Now.ToString().Replace(':', '_');
             var fileName = Path.Combine(PathModel, date + ".csv");
             try
             {

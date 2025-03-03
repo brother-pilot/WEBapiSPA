@@ -1,4 +1,4 @@
-﻿public class LogEntry
+﻿public class LogAdapterAngular
 {
     //public DateTime EntryDate { get; set; }
     //public string Message { get; set; }

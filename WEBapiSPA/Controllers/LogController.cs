@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging.Abstractions;
 using WEBapiSPA.DAL;
 using WEBapiSPA.DI;
+using WEBapiSPA.Services;
 
 namespace WEBapiSPA.Controllers
 {
@@ -17,11 +19,12 @@ namespace WEBapiSPA.Controllers
         }
         // POST api/<controller>
         [HttpPost]
-        public IActionResult Post([FromBody] LogEntry value)
+        public IActionResult Post([FromBody] LogAdapterAngular value)
         {
             IActionResult ret;
-
-            //ConsoleColor.Green;
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.WriteLine("*****************");
+            Console.BackgroundColor = ConsoleColor.Black;
             log.LogInformation($"Search request from angular part!");
             log.LogInformation("Level: "+value.Level.ToString()+
                 " Additional: "+value.Additional.ToString()+

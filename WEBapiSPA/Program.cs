@@ -8,7 +8,7 @@ using WEBapiSPA.Providers;
 using WEBapiSPA.Services;
 using static System.Net.WebRequestMethods;
 //В приложении реализовано четыре уровня логгирования:
-//1 Стандартный через ILogger, проводится частное логгирование отдельных методов
+//1 По умолчанию через ILogger, проводится частное логгирование отдельных методов
 //2 Через фильтр LogActionFilter, проводится логгирование запуска и окончания работы методов контролера
 //3 Стандартное через HttpLogging, производится логгирование запросов и ответов серверу
 //4 Через LogController производится получение данных от Angular приложения
@@ -44,6 +44,7 @@ builder.Services.AddHttpLogging(logging =>
 //настраиваем DI
 builder.Services.AddSingleton<IMessageMemory,MessageMemory>();
 builder.Services.AddScoped<IMessageFile,FileService>();
+//builder.Services.AddScoped<IMessageFile, FileService>();
 // Configure the HTTP request pipeline.
 
 //разрешаем запрос сервака ангуляра к asp net core(CORS)

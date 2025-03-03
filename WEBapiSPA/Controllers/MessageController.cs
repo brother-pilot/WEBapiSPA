@@ -29,7 +29,7 @@ namespace WEBapiSPA.Controllers
         //GET: MessageController
         [HttpGet]
         public IEnumerable<Message> Index()
-        {
+        {      
             var res = MM.GetListDevice().ToArray();
             if (res.Length != 0)
                 log.LogInformation($"Search request to find devices is done!");

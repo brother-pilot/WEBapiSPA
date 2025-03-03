@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
+using System.Reflection;
 using WEBapiSPA.Model;
 using WEBapiSPA.Services;
 
@@ -27,9 +28,10 @@ namespace WEBapiSPA.Filters
         //сохранение специально сделано в отдельный файл, для демострации работы фильтра
         private void WriteLog(string message)
         {
+            var fileName = Path.Combine(logFileFilterPath, "logFilter.txt");
             try
             {
-                StreamWriter streamWriter = new StreamWriter("logFilter.txt", true);
+                StreamWriter streamWriter = new StreamWriter(fileName, true);
                 streamWriter.WriteLine(message);
                 streamWriter.Close();
             }
@@ -46,6 +48,8 @@ namespace WEBapiSPA.Filters
             // Этот метод выполняется после метода контроллера
             _logger.LogInformation(message);
         }
+
+        private static string logFileFilterPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
     }
 }

@@ -1,0 +1,28 @@
+<p *ngIf="!messages"><em>Loading... Please refresh once the ASP.NET backend has started.
+  See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a>
+  for more details.</em></p>
+
+<h2>Список оборудования</h2>
+<table *ngIf="messages">
+  <thead>
+    <tr>
+      <td>Идентификатор оборудования</td>
+      <td>Пользователь</td>
+      <td>Версия ПО</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of messages; let e = even" [style.background]="e ? 'yellow' : ''">
+      <ng-template [ngIf]="messages">
+        <td>{{m?.device}}</td>
+        <td>{{m?.userName}}</td>
+        <td>{{m?.versionPA}}</td>
+        <td>
+          <button class="btn btn-sm" (click)="getListMessage(m)">Подробнее</button>
+        </td>
+      </ng-template>
+
+    </tr>
+  </tbody>
+</table>

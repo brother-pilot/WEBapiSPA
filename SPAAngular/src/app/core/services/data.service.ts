@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from './message';
+import { Message } from '../model/message';
 import { NGXLogger } from "ngx-logger";
 
 
@@ -14,12 +14,12 @@ export class DataService {
   }
 
   get() {
-    this.logger.error("Get request to webapi from angular", new Logmes("Tom","555"));
+    this.logger.info("Get request to webapi from angular",this.url);
     return this.http.get(this.url);
   }
 
   getListMessage(deviceId: string) {
-    this.logger.error("GetListMessage request to webapi from angular", "GetListMessage request to webapi", deviceId);
+    this.logger.info("GetListMessage request to webapi from angular", " GetListMessage request to webapi", deviceId);
     return this.http.get(this.url + deviceId);
   }
   //TO DO: переделать в обычные ошибки

@@ -1,0 +1,13 @@
+p {
+
+    align:center;
+}
+nav {
+  width: 10%;
+  float: left;
+}
+section {
+  width: 85%;
+  float: right;
+}
+

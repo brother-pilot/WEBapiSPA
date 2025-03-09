@@ -1,0 +1,21 @@
+td {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 3px;
+}
+
+
+td:nth-child (odd) {
+  background-color: #C9E4F6; /* фон нечетных столбцов */
+}
+
+tr:nth-child (even) {
+  background-color: #B4DAF2; /* фон четных столбцов */
+}
+
+tbody tr:hover td {
+  background: blue; /* фон строки при наведении, причем только тела таблицы */
+}
+
+

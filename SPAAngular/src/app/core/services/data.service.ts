@@ -33,6 +33,11 @@ export class DataService {
     //return this.http.post(this.url, date);
     return this.http.post(this.url+"delete",date);
   }
+
+  saveMessages() {
+    this.logger.info("Get file save request to webapi from angular");
+    return this.http.head('http://localhost:5000/file/');
+  }
 }
 
 export class Logmes {

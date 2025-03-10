@@ -9,6 +9,7 @@ import { MessageListComponent } from './message-list/message-list.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { routes } from "./app.routes";
 import { DeleteMessageComponent } from './delete-message/delete-message.component';
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DeleteMessageComponent } from './delete-message/delete-message.componen
       serverLogLevel: NgxLoggerLevel.LOG,
       disableConsoleLogging: false
     }),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
 
   ],
   providers: [],

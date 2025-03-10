@@ -62,14 +62,15 @@ namespace WEBapiSPA.Controllers
         {
             var res = MM.SaveMessage(message);
             if (res)
-                log.LogInformation($"Message {message.Id} was saved!"); 
+                log.LogInformation($"Message {message.Id} was saved!");
             else
                 log.LogError($"Message {message.Id} can't be saved!");
-            return res?Ok(): new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            return res ? Ok() : new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
 
-        [HttpDelete]
-        public IActionResult DeleteMessage(DateTime dateTime)
+        [HttpPost("delete")]
+        //[HttpPost]
+        public IActionResult DeleteMessage([FromBody]DateTime dateTime)
         {
             var res = MM.DellMessageOlderDate(dateTime);
             if (res)

@@ -1,1 +1,7 @@
-<p>delete-message works!</p>
+
+<label for="dateInput">Выберите дату:</label>
+<input type="date" id="dateInput" [(ngModel)]="date">
+
+<button class="btn btn-default" (click)="backToDevisesList()">Cancel</button>
+<button class="btn btn-primary" (click)="deleteMessages()">Delete</button>
+

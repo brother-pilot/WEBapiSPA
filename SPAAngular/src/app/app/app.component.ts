@@ -12,7 +12,11 @@ export class AppComponent {
 
   constructor(private router: Router) { }
 
-  deleteOldMessage() {
+  deleteOldMessages() {
+    this.router.navigate(["/delete"]);
+  }
+
+  saveMessages() {
     this.router.navigate(["/delete"]);
   }
 }

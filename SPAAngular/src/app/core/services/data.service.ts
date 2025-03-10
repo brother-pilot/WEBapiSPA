@@ -28,9 +28,11 @@ export class DataService {
   //  return this.http.post('http://localhost:5000/log/',);
   //}
 
-  //deleteProduct(id: number) {
-  //  return this.http.delete(this.url + '/' + id);
-  //}
+  deleteMessages(date: Date) {
+    this.logger.info("Get delete request to webapi from angular", date);
+    //return this.http.post(this.url, date);
+    return this.http.post(this.url+"delete",date);
+  }
 }
 
 export class Logmes {

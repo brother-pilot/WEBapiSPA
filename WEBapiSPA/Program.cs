@@ -38,7 +38,7 @@ builder.Services.AddHttpLogging(logging =>
     logging.MediaTypeOptions.AddText("application/javascript");
     logging.RequestBodyLogLimit = 4096;
     logging.ResponseBodyLogLimit = 4096;
-    logging.CombineLogs = true;
+    logging.CombineLogs = false;
 });
 
 //настраиваем DI
@@ -54,7 +54,8 @@ builder.Services.AddCors(options =>
     builder =>
     {
         builder.WithOrigins(
-                            "http://localhost:4200"
+                            "http://localhost:4200",
+                            "http://localhost:5000"
                             )
                             .AllowAnyHeader()
                             .AllowAnyMethod();

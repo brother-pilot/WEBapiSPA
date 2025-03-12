@@ -22,7 +22,6 @@ export class DataService {
     this.logger.info("GetListMessage request to webapi from angular", " GetListMessage request to webapi", deviceId);
     return this.http.get(this.url + deviceId);
   }
-  //TO DO: переделать в обычные ошибки
 
   //log() {
   //  return this.http.post('http://localhost:5000/log/',);

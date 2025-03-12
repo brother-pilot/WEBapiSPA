@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 
 import { Router } from "@angular/router";
 import { DataService } from '../core/services/data.service';
@@ -11,7 +11,8 @@ import { Message } from '../core/model/message';
   providers: [DataService]
 })
 export class DeviceListComponent implements OnInit {
-  public messages: Message[] = [];                // массив сообщений
+  messages: Message[]=[];                // массив сообщений
+  public showDownloadingMessage: boolean = true;
 
   constructor(private dataService: DataService,
     private router: Router) { }
@@ -19,12 +20,13 @@ export class DeviceListComponent implements OnInit {
   ngOnInit() {
     this.loadMessages();    // загрузка данных при старте компонента
   }
+
   // получаем данные через сервис
   private loadMessages() {
     this.dataService.get()
-      .subscribe((data: any) => this.messages = data);
-    console.log(this.messages);
-    //console.log(typeof this.messages);
+      .subscribe((data: any) => {
+        this.messages = data;
+        this.showDownloadingMessage = false;});
   }
 
   getListMessage(message: Message) {
@@ -32,10 +34,4 @@ export class DeviceListComponent implements OnInit {
     //console.log(this.messages);
     //console.log(typeof this.messages);
   }
-
-  //delete(p: Product) {
-  //  this.dataService.deleteProduct(p.id)
-  //    .subscribe(data => this.loadProducts());
-  //}
-
 }

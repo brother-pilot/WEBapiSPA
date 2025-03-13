@@ -10,8 +10,8 @@ import { DeviceListComponent } from './device-list/device-list.component';
 import { routes } from "./app.routes";
 import { DeleteMessageComponent } from './delete-message/delete-message.component';
 import { FormsModule } from "@angular/forms";
-import { LogService } from './log.service';
-import { LogPublishersService } from "./LogPublishers.Service";
+import { LogService } from './core/services/log.service';
+import { LogPublishersService } from "./core/services/LogPublishers.Service";
 
 
 @NgModule({

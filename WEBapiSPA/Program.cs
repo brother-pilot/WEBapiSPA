@@ -38,7 +38,7 @@ builder.Services.AddHttpLogging(logging =>
     logging.MediaTypeOptions.AddText("application/javascript");
     logging.RequestBodyLogLimit = 4096;
     logging.ResponseBodyLogLimit = 4096;
-    logging.CombineLogs = false;
+    logging.CombineLogs = true;
 });
 
 //настраиваем DI

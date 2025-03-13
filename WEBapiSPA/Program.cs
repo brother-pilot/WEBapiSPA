@@ -7,12 +7,16 @@ using WEBapiSPA.Filters;
 using WEBapiSPA.Providers;
 using WEBapiSPA.Services;
 using static System.Net.WebRequestMethods;
-//В приложении реализовано четыре уровня логгирования:
+//В приложении ASP Net Core реализовано четыре уровня логгирования:
 //1 По умолчанию через ILogger, проводится частное логгирование отдельных методов
 //2 Через фильтр LogActionFilter, проводится логгирование запуска и окончания работы методов контролера
 //3 Стандартное через HttpLogging, производится логгирование запросов и ответов серверу
 //4 Через LogController производится получение данных от Angular приложения
 //Вывод логов производится на консоль через функционал ILogger и в файл Log через LogFileServiceProvider
+/*В проекте SPAAngular два уровня логгирования:
+ 1 Через библиотеку NGXLogger
+ 2 Через написанный сервис LoggerService
+Полученные от проекта SPAAngular логи выделены звездочками */
 
 
 var builder = WebApplication.CreateBuilder(args);

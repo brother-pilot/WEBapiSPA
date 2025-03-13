@@ -27,7 +27,7 @@ import { LogPublishersService } from "./core/services/LogPublishers.Service";
     LoggerModule.forRoot({
       serverLoggingUrl: 'http://localhost:5000/log/', // Replace with YOUR API,
       level: NgxLoggerLevel.TRACE,
-      serverLogLevel: NgxLoggerLevel.LOG,
+      serverLogLevel: NgxLoggerLevel.TRACE,
       disableConsoleLogging: false
     }),
     RouterModule.forRoot(routes),

@@ -16,7 +16,7 @@ export class DataService {
   }
 
   get() {
-    this.logger.log("Get request to webapi from angular with NGXLogger", this.url);//отправляются сообщения уровня error
+    this.logger.log("Get request to webapi from angular with NGXLogger", this.url);
     this.loggerServ.log("Get request to webapi from angular with LogService", this.url);
     return this.http.get(this.url);
   }

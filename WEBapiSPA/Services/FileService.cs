@@ -20,7 +20,8 @@ namespace WEBapiSPA.Services
 
         public bool SaveMessages(List<Message> listItems)
         {
-            var date = DateTime.Now.ToString().Replace(':', '_');
+            var date = DateTime.Now.ToString().Replace(':', '_').Replace('/', '_');
+            //не забывать что файлы могут сохраняться в линуксе
             var fileName = Path.Combine(PathModel, date + ".csv");
             try
             {
@@ -28,13 +29,13 @@ namespace WEBapiSPA.Services
                 StreamWriter streamW = new StreamWriter(fs);
                 listItems.ForEach(m => streamW.WriteLine(m.ToString()));
                 streamW.Close();
-                log.LogInformation($"Messages was saved in file {date}.csv!");
+                log.LogInformation($"Messages was saved in file {date}.csv in path {fileName}!");
                 return true;
                     
             }
             catch (Exception e)
             {
-                log.LogError(e,$"Messages can't be saved in file {date}.csv!");
+                log.LogError(e,$"Messages can't be saved in file {date}.csv in path {fileName}!");
                 //throw new Exception("Не удалось сохранить данные в файл!");
                 return false;
             }

@@ -39,7 +39,7 @@ namespace WEBapiSPA.Services
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.Message, $"Log's can't be saved in log file!");
+                        Console.WriteLine(e.Message, $"Log's can't be saved in log file in path {logFilePath}!");
                     }
                 }
             }

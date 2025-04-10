@@ -8,7 +8,7 @@ import { LogService } from './log.service';
 @Injectable()
 export class DataService {
 
-  private url = "http://localhost:5000/message/";
+  private url = "http://localhost:5000/messages/";
 
   constructor(private http: HttpClient,
     private logger: NGXLogger,

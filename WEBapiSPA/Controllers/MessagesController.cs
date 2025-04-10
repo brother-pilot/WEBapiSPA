@@ -8,13 +8,13 @@ namespace WEBapiSPA.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class MessageController : Controller
+    public class MessagesController : Controller
     {
 
         private IMessageMemory MM { get; }
         private readonly ILogger<MessageMemory> log;
 
-        public MessageController(IMessageMemory messageMemory, ILogger<MessageMemory> logger)
+        public MessagesController(IMessageMemory messageMemory, ILogger<MessageMemory> logger)
         {
             log = logger;
             MM = messageMemory;

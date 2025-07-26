@@ -22,7 +22,18 @@ namespace WEBapiSPA.Controllers
             MM= messageMemory;
             MF = messageFile;
         }
-
+        /// <summary>
+        ///  Сохранение сообщений в файл
+        /// </summary>
+        /// /// <remarks>
+        /// Пример запроса:
+        ///
+        ///     HEAD /file
+        ///
+        /// </remarks>
+        /// <returns></returns>
+        /// <response code="200">Успешное выполнение</response>
+        /// <response code="500">Ошибка сохранения сообщения в файл</response>
         [HttpHead]
         public IActionResult SaveMessages()
         {

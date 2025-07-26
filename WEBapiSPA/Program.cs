@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using WEBapiSPA.DAL;
 using WEBapiSPA.DI;
 using WEBapiSPA.Filters;
@@ -13,6 +14,8 @@ using static System.Net.WebRequestMethods;
 //3 Стандартное через HttpLogging, производится логгирование запросов и ответов серверу
 //4 Через LogController производится получение данных от Angular приложения
 //Вывод логов производится на консоль через функционал ILogger и в файл Log через LogFileServiceProvider
+//Схема API описана в файле WEBapiSPA.xml
+//Коды возращаемых ошибок 500 без дополнительной информации для сокрытия внутренней структуры сервера
 /*В проекте SPAAngular два уровня логгирования:
  1 Через библиотеку NGXLogger
  2 Через написанный сервис LoggerService
@@ -33,7 +36,32 @@ builder.Services.AddControllers(c =>
 builder.Logging.AddProvider(new LogFileServiceProvider());
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Web API приложение",
+        Description = "Приложение ASP .NET Core Web API для накопления данных об устройствах",
+        /*Contact = new OpenApiContact
+        {
+            Name = "Пример контакта",
+            Url = new Uri("https://example.com/contact")
+        },
+        License = new OpenApiLicense
+        {
+            Name = "Пример лицензии",
+            Url = new Uri("https://example.com/license")
+        }*/
+    });
+});
+builder.Services.AddSwaggerGen(options =>
+{
+    var basePath = AppContext.BaseDirectory;
+
+    var xmlPath = Path.Combine(basePath, "WEBapiSPA.xml");
+    options.IncludeXmlComments(xmlPath);
+});
 
 builder.Services.AddHttpLogging(logging =>
 {

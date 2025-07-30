@@ -1,0 +1,1 @@
+var ROUTES_INDEX = {"name":"<root>","kind":"module","className":"AppModule","children":[{"kind":"component","component":"DeviceListComponent","path":"devices"},{"kind":"component","component":"MessageListComponent","path":"messages/:deviceId"},{"kind":"component","component":"DeleteMessageComponent","path":"delete"}]}

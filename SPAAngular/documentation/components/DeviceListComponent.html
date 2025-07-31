@@ -165,7 +165,7 @@
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./device-list.component.css</code></td>
+                <td class="col-md-9"><code>./device-list.component.less</code></td>
             </tr>
 
 
@@ -536,7 +536,7 @@ import { Message } from &#x27;../core/model/message&#x27;;
 @Component({
   selector: &#x27;app-device-list&#x27;,
   templateUrl: &#x27;./device-list.component.html&#x27;,
-  styleUrls: [&#x27;./device-list.component.css&#x27;],
+  styleUrls: [&#x27;./device-list.component.less&#x27;],
   providers: [DataService]
 })
 export class DeviceListComponent implements OnInit {
@@ -603,13 +603,15 @@ export class DeviceListComponent implements OnInit {
 
     <div class="tab-pane fade " id="styleData">
                 <p class="comment">
-                    <code>./device-list.component.css</code>
+                    <code>./device-list.component.less</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">.h {
-  font-size: 20px;
+                <pre class="line-numbers"><code class="language-scss">@import &quot;src/stylesConst.less&quot;;
+
+.h {
+  font-size: @header-size;
   margin-left: 150px;
   margin-bottom: 0px;
-  font-weight: bold;
+  font-weight: @header-weight;
 }
 
 td {
@@ -617,22 +619,19 @@ td {
   border-radius: 3px;
   padding: 5px;
   margin: 3px;
-}
 
+  td:nth-child (odd) {
+    background-color: #C9E4F6; /* фон нечетных столбцов */
+  }
 
-td:nth-child (odd) {
-  background-color: #C9E4F6; /* фон нечетных столбцов */
-}
-
-tr:nth-child (even) {
-  background-color: #B4DAF2; /* фон четных столбцов */
+  tr:nth-child (even) {
+    background-color: rgb(180,118,244); /* фон четных столбцов */
+  }
 }
 
 tbody tr:hover td {
   background: blue; /* фон строки при наведении, причем только тела таблицы */
 }
-
-
 </code></pre>
     </div>
 

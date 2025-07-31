@@ -83,16 +83,15 @@
                    <div class="content-data">
 
 <h1>Приложение для мониторинга работы устройств с серверной частью ASP NET CORE Web api и фронтовой частью SPA Angular</h1>
+<p>Полностью реализовано ТЗ и выполнены доп. задания</p>
 <p><strong>Клиентская часть приложения позволяет пользователю:</strong></p>
 <ul>
 <li>просматривать список устройств; </li>
 <li>просматривать список сообщений об устройстве;</li>
 <li>удалять старые сообщения;</li>
 <li>сохранять накопленную информацию на сервере в файл на сервере;</li>
-<li>логгирование работы приложения в консоль, на сервер, в хранилище браузера</li>
+<li>логгирование работы приложения в консоль, на сервер, в хранилище браузера<img src="main page.jpg"></li>
 </ul>
-<img src="main page.jpg">
-
 <p><strong>Серверная часть приложения имеет функционал, доступный через api соответствующих контролеров:</strong></p>
 <ul>
 <li>сохранение сообщений в оперативную память сервера,</li>
@@ -104,11 +103,24 @@
 <li>По умолчанию через <code>ILogger</code>, проводится частное логгирование отдельных методов</li>
 <li>Через фильтр <code>LogActionFilter</code>, проводится логгирование запуска и окончания работы методов контролера</li>
 <li>Стандартное через <code>HttpLogging</code>, производится логгирование запросов и ответов серверу</li>
-<li>Через LogController производится получение данных от Angular приложения.Вывод логов производится на консоль через функционал ILogger и в файл Log через LogFileServiceProvider
- <img src="https://komarev.com/ghpvc/?username=brother-pilot&style=flat" alt="" class="img-responsive"></li>
+<li>Через LogController производится получение данных от Angular приложения.Вывод логов производится на консоль через функционал ILogger и в файл Log через LogFileServiceProvider</li>
 </ul>
 </li>
 </ul>
+<p> <strong>Документация и схемы API:</strong></p>
+<ul>
+<li><a href="/documentation/index.html">SPA Angular</a>(файл index.html в папке /documentation)</li>
+<li><a href="/WEBapiSPA/WEBapiSPA.xml">ASP NET CORE Web api</a> (файл WEBapiSPA.xml)</li>
+</ul>
+<p> <strong>Технологии:</strong></p>
+<ul>
+<li>.NET 8</li>
+<li>angular 15</li>
+<li>LESS</li>
+<li>JSON</li>
+<li>Docker</li>
+</ul>
+<p> <img src="https://komarev.com/ghpvc/?username=brother-pilot&style=flat" alt="" class="img-responsive"></p>
 
 
 

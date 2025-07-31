@@ -6,7 +6,7 @@ import { DataService } from '../core/services/data.service';
 @Component({
   selector: 'app-delete-message',
   templateUrl: './delete-message.component.html',
-  styleUrls: ['./delete-message.component.css'],
+  styleUrls: ['./delete-message.component.less'],
   providers: [DataService]
 })
 export class DeleteMessageComponent {

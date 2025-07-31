@@ -7,7 +7,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-message-list',
   templateUrl: './message-list.component.html',
-  styleUrls: ['./message-list.component.css'],
+  styleUrls: ['./message-list.component.less'],
   providers: [DataService]
 })
 

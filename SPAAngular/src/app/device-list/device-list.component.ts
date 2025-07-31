@@ -7,7 +7,7 @@ import { Message } from '../core/model/message';
 @Component({
   selector: 'app-device-list',
   templateUrl: './device-list.component.html',
-  styleUrls: ['./device-list.component.css'],
+  styleUrls: ['./device-list.component.less'],
   providers: [DataService]
 })
 export class DeviceListComponent implements OnInit {

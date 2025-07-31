@@ -1,0 +1,27 @@
+@import "src/stylesConst.less";
+
+.h {
+  font-size: @header-size;
+  margin-left: 150px;
+  margin-bottom: 0px;
+  font-weight: @header-weight;
+}
+
+td {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 3px;
+
+  td:nth-child (odd) {
+    background-color: #C9E4F6; /* фон нечетных столбцов */
+  }
+
+  tr:nth-child (even) {
+    background-color: rgb(180,118,244); /* фон четных столбцов */
+  }
+}
+
+tbody tr:hover td {
+  background: blue; /* фон строки при наведении, причем только тела таблицы */
+}
